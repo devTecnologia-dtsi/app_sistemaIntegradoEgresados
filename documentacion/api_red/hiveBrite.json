@@ -1,0 +1,624 @@
+{
+	"info": {
+		"_postman_id": "07df657e-5143-4af8-b219-df1a106638d4",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6547803"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"token_red\", jsonData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "admin_email",
+							"value": "rmarente@uniminuto.edu.co",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "i@nDr3sM0209*",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "ruSNXgbypABrhv7zOiAB5O8HHbRHIlY-3WJJ3XLCfsM",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "B8rFYEjm_Zn6KLnZ7XORmn6rWsrxePQSnWTmF_SMT10",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "urn:ietf:wg:oauth:2.0:oob",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/oauth/token",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v3/admins?type=all&page=1&per_page=20",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v3",
+						"admins"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "all"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "approvals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v1/approvals?page=1&per_page=3",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v1",
+						"approvals"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v2/categories",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v2",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "email_analytics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v3/email_analytics_v2/deliveries?page=1&per_page=20",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v3",
+						"email_analytics_v2",
+						"deliveries"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forums_discussions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v3/forums/discussions",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v3",
+						"forums",
+						"discussions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "network",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v1/network",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v1",
+						"network"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v1/users?page=1&per_page=3",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v3/admins/17407",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v3",
+						"admins",
+						"17407"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventures",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v2/ventures?parent=all&parent_id=1",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v2",
+						"ventures"
+					],
+					"query": [
+						{
+							"key": "parent",
+							"value": "all"
+						},
+						{
+							"key": "parent_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "news",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v1/news",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v1",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pages_customizable",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v1/pages_customizable?owner=network&owner_id=1",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v1",
+						"pages_customizable"
+					],
+					"query": [
+						{
+							"key": "owner",
+							"value": "network"
+						},
+						{
+							"key": "owner_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "notifications",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v3/notifications?type=user&page=1&per_page=10",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v3",
+						"notifications"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "user"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "network_events",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_red}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://uniminuto.us.hivebrite.com/api/admin/v2/network_events?parent=all&registration_type=all",
+					"protocol": "https",
+					"host": [
+						"uniminuto",
+						"us",
+						"hivebrite",
+						"com"
+					],
+					"path": [
+						"api",
+						"admin",
+						"v2",
+						"network_events"
+					],
+					"query": [
+						{
+							"key": "parent",
+							"value": "all"
+						},
+						{
+							"key": "registration_type",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
